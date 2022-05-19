@@ -18,3 +18,7 @@ function multiply(array) {
     })
     return result;
 }
+
+function divide(dividend, divisor) {
+    return dividend / divisor;
+}
