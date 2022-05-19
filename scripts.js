@@ -9,5 +9,12 @@ function add() {
 
 function subtract() {
     const numbers = Array.from(arguments);
-    return numbers[0] - number[1];
+    return numbers[0] - numbers[1];
+}
+
+function multiply(array) {
+    const result = array.reduce((currentProduct, num) => {
+        return currentProduct * num;
+    })
+    return result;
 }
