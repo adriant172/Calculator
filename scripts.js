@@ -1,8 +1,13 @@
 function add() {
-    const numbers = Array.from(arguments)
+    const numbers = Array.from(arguments);
     sum = numbers.reduce((total, number) => {
         number = parseInt(number);
         return total + number;
     }, 0)
     return sum;
+}
+
+function subtract() {
+    const numbers = Array.from(arguments);
+    return numbers[0] - number[1];
 }
