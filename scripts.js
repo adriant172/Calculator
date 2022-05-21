@@ -27,11 +27,12 @@ function operate(operator, num1, num2) {
     }
 }
 
+const calculator = document.querySelector('.calculator');
+
 function createCalculator() {
     const buttonValues = [1,2,3,"+",4,5,6,"-",7,8,9,"·", "C", 0, "=","÷"];
-    const calculator = document.querySelector('.calculator');
     for (value of buttonValues) {
-        let calculatorButton = document.createElement('div');
+        let calculatorButton = document.createElement('button');
         calculatorButton.classList.add('calButton');
         calculatorButton.textContent = value;
         calculator.appendChild(calculatorButton);
@@ -39,3 +40,17 @@ function createCalculator() {
 }
 
 createCalculator();
+
+const calcButtons = document.querySelectorAll('.calButton');
+const display = document.querySelector('.display-screen')
+let displayValue = 0;
+let currentOperator;
+
+calcButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        if (parseInt(button.textContent) >= 0) {
+            displayValue = button.textContent;
+            display.textContent = displayValue;
+        }
+    })
+})
