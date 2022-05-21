@@ -33,7 +33,9 @@ function createCalculator() {
     for (value of buttonValues) {
         let calculatorButton = document.createElement('div');
         calculatorButton.classList.add('calButton');
+        calculatorButton.textContent = value;
         calculator.appendChild(calculatorButton);
     }
-
 }
+
+createCalculator();

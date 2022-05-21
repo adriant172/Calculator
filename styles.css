@@ -1,5 +1,5 @@
 * {
-    border: red 2px;
+    border: red solid 2px;
 }
 .calculator {
     height: 500px;
@@ -7,5 +7,12 @@
     display: grid;
     grid-template-columns: repeat(4,1fr);
     grid-template-rows: repeat(5, 1fr)
-
+}
+.display-screen {
+    grid-column: 1 / 5;
+}
+.calButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
