@@ -4,7 +4,7 @@ body {
     justify-content: center;
 }
 .calculator {
-    border: red solid 5px;
+    border: dodgerblue solid 5px;
     height: 500px;
     width: 400px;
     display: grid;
@@ -17,11 +17,14 @@ body {
     justify-content: flex-end;
     align-items: flex-end;
     font-size: 32px;
+    border-bottom: dodgerblue solid 5px;
+    background-color: lightgrey;
 
 }
 .calButton {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: red solid 2px;
+    border: solid 2px;
+    border-color: dodgerblue;
 }
