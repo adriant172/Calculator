@@ -1,7 +1,10 @@
-* {
-    border: red solid 2px;
+
+body {
+    display: flex;
+    justify-content: center;
 }
 .calculator {
+    border: red solid 5px;
     height: 500px;
     width: 400px;
     display: grid;
@@ -10,9 +13,15 @@
 }
 .display-screen {
     grid-column: 1 / 5;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: 32px;
+
 }
 .calButton {
     display: flex;
     align-items: center;
     justify-content: center;
+    border: red solid 2px;
 }
