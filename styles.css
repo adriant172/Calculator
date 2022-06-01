@@ -9,7 +9,7 @@ body {
     width: 400px;
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    grid-template-rows: repeat(5, 1fr)
+    grid-template-rows: repeat(6, 1fr)
 }
 .display-screen {
     grid-column: 1 / 5;
@@ -27,4 +27,7 @@ body {
     justify-content: center;
     border: solid 2px;
     border-color: dodgerblue;
+}
+.equalsButton {
+    grid-column: 1/5;
 }

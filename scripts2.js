@@ -38,10 +38,13 @@ function roundIfDecimal(num) {
 const calculator = document.querySelector('.calculator');
 
 function createCalculator() {
-    const buttonValues = ["1","2","3","+","4","5","6","-","7","8","9","x", "C", "0", "=","÷"];
+    const buttonValues = ["1","2","3","+","4","5","6","-","7","8","9","x", "C", "0", ".","÷", "="];
     for (value of buttonValues) {
         let calculatorButton = document.createElement('button');
         calculatorButton.classList.add('calButton');
+        if (value == "=") {
+            calculatorButton.classList.add('equalsButton')
+        }
         calculatorButton.textContent = value;
         calculator.appendChild(calculatorButton);
     }
@@ -59,18 +62,23 @@ let currentOperator = "";
 
 
 calcButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        if (parseInt(button.textContent) >= 0 && parseInt(button.textContent) <= 9) {
-            if(values[0] && values[1]) {
+    button.addEventListener('click', (e) => {
+        //Only allow one decimal point per number
+        if (button.textContent == ".") {
+             if (currentNum.includes(".")){
+                 return
+             }
+        }
+        if (parseInt(button.textContent) >= 0 && parseInt(button.textContent) <= 9 || button.textContent == ".") {
+            if (values[2]) {
+                values[2] += button.textContent;
+            }else if(values[0] && values[1]) {
                 currentNum = "";
                 values[2] = button.textContent;
             }else if (values[0]) {
                 currentNum = "";
                 values.pop();
-            }
-             else if (values[2]) {
-                values[2] += button.textContent;
-            }
+            }     
             currentNum+= button.textContent;
             display.textContent = currentNum;
         } else if (operators.includes(button.textContent)) {
@@ -80,7 +88,7 @@ calcButtons.forEach(button => {
                     display.textContent = "That calculation is not allowed!!";
                     return;
                 }
-                currentNum = operate(parseInt(values[0]), values[1],parseInt(values[2]));
+                currentNum = operate(parseFloat(values[0]), values[1],parseFloat(values[2]));
                 currentNum = roundIfDecimal(currentNum);
                 while (values.length > 0) {
                     values.pop();
@@ -98,7 +106,7 @@ calcButtons.forEach(button => {
                     display.textContent = "That calculation is not allowed!!";
                     return;
                 }
-                currentNum = operate(parseInt(values[0]), values[1],parseInt(values[2]));
+                currentNum = operate(parseFloat(values[0]), values[1],parseFloat(values[2]));
                 currentNum = roundIfDecimal(currentNum);
                 while (values.length > 0) {
                     values.pop();
@@ -106,7 +114,7 @@ calcButtons.forEach(button => {
                 values.push(currentNum);
                 
             } else if (values[1]) {
-                currentNum = operate(parseInt(values[0]), values[1],parseInt(values[0]));
+                currentNum = operate(parseFloat(values[0]), values[1],parseFloat(values[0]));
                 currentNum = roundIfDecimal(currentNum);
                 while (values.length > 0) {
                     values.pop();
