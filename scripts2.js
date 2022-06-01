@@ -33,7 +33,6 @@ function roundIfDecimal(num) {
     } else {
         return Math.round(num * 100) / 100;
     }
-
 }
 
 const calculator = document.querySelector('.calculator');
