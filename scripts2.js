@@ -38,7 +38,7 @@ function roundIfDecimal(num) {
 const calculator = document.querySelector('.calculator');
 
 function createCalculator() {
-    const buttonValues = ["1","2","3","+","4","5","6","-","7","8","9","x", "C", "0", ".","÷", "="];
+    const buttonValues = ["1","2","3","+","4","5","6","-","7","8","9","x", "C", "0", ".","÷","=", "del"];
     for (value of buttonValues) {
         let calculatorButton = document.createElement('button');
         calculatorButton.classList.add('calButton');
@@ -68,6 +68,12 @@ calcButtons.forEach(button => {
              if (currentNum.includes(".")){
                  return
              }
+        }
+        if (button.textContent === "del") {
+            alteredNum = currentNum.slice(0, -1);
+            display.textContent = alteredNum;
+            currentNum = alteredNum;
+            
         }
         //If button pressed is a number proceed to evaluate whether it needs to be appended to current number or added to the value array
         if (parseInt(button.textContent) >= 0 && parseInt(button.textContent) <= 9 || button.textContent == ".") {
@@ -110,7 +116,7 @@ calcButtons.forEach(button => {
                     return;
                 }
                 currentNum = operate(parseFloat(values[0]), values[1],parseFloat(values[2]));
-                currentNum = roundIfDecimal(currentNum);
+                currentNum = roundIfDecimal(currentNum).toString();
                 while (values.length > 0) {
                     values.pop();
                 }
@@ -118,7 +124,7 @@ calcButtons.forEach(button => {
                 
             } else if (values[1]) {
                 currentNum = operate(parseFloat(values[0]), values[1],parseFloat(values[0]));
-                currentNum = roundIfDecimal(currentNum);
+                currentNum = roundIfDecimal(currentNum).toString();
                 while (values.length > 0) {
                     values.pop();
                 }
