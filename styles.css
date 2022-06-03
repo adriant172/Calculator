@@ -4,7 +4,8 @@ body {
     justify-content: center;
 }
 .calculator {
-    border: dodgerblue solid 5px;
+    border: #292F36 solid 5px;
+    border-radius: 5px;
     height: 500px;
     width: 400px;
     display: grid;
@@ -17,7 +18,7 @@ body {
     justify-content: flex-end;
     align-items: flex-end;
     font-size: 32px;
-    border-bottom: dodgerblue solid 5px;
+    border: #292F36 solid 2px;
     background-color: lightgrey;
 
 }
@@ -26,7 +27,11 @@ body {
     align-items: center;
     justify-content: center;
     border: solid 2px;
-    border-color: dodgerblue;
+    border-color: #292F36;
+    background-color: #4ECDC4;
+    color: #2C2C54;
+    font-weight: 900;
+    font-size: large;
 }
 .equalsButton {
     grid-column: 1/5;
