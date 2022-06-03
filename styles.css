@@ -32,7 +32,16 @@ body {
     color: #2C2C54;
     font-weight: 900;
     font-size: large;
+    transition: all .08s ease;
+}
+.operatorButton {
+    background-color: #FF6B6B;
+
 }
 .equalsButton {
     grid-column: 1/4;
+}
+.pressed {
+    transform: scale(1.1);
+    border-color: #F7FFF7;
 }

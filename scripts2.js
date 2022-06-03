@@ -35,6 +35,14 @@ function roundIfDecimal(num) {
     }
 }
 
+function removeTransition(e) {
+    if (e.propertyName !== 'transform'){
+        return;
+    }
+    e.target.classList.remove('pressed');
+}
+
+const operators = ["+", "-", "x", "÷"]
 const calculator = document.querySelector('.calculator');
 
 function createCalculator() {
@@ -44,6 +52,8 @@ function createCalculator() {
         calculatorButton.classList.add('calButton');
         if (value == "=") {
             calculatorButton.classList.add('equalsButton')
+        } else if (operators.includes(value)) {
+            calculatorButton.classList.add('operatorButton')
         }
         calculatorButton.textContent = value;
         calculator.appendChild(calculatorButton);
@@ -54,7 +64,7 @@ createCalculator();
 
 const calcButtons = document.querySelectorAll('.calButton');
 const display = document.querySelector('.display-screen')
-const operators = ["+", "-", "x", "÷"]
+
 
 let values  = [];
 let currentNum = "";
@@ -63,6 +73,7 @@ let currentOperator = "";
 
 calcButtons.forEach(button => {
     button.addEventListener('click', (e) => {
+        button.classList.add('pressed')
         //Only allow one decimal point per number
         if (button.textContent == ".") {
              if (currentNum.includes(".")){
@@ -70,10 +81,8 @@ calcButtons.forEach(button => {
              }
         }
         if (button.textContent === "del") {
-            alteredNum = currentNum.slice(0, -1);
-            display.textContent = alteredNum;
-            currentNum = alteredNum;
-            
+            currentNum = currentNum.slice(0, -1);
+            display.textContent = currentNum;
         }
         //If button pressed is a number proceed to evaluate whether it needs to be appended to current number or added to the value array
         if (parseInt(button.textContent) >= 0 && parseInt(button.textContent) <= 9 || button.textContent == ".") {
@@ -142,6 +151,10 @@ calcButtons.forEach(button => {
             display.textContent = "0";
         }     
     })
+})
+
+calcButtons.forEach(button => {
+    button.addEventListener('transitionend', removeTransition);
 })
 
 
