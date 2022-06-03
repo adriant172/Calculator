@@ -69,6 +69,7 @@ calcButtons.forEach(button => {
                  return
              }
         }
+        //If button pressed is a number proceed to evaluate whether it needs to be appended to current number or added to the value array
         if (parseInt(button.textContent) >= 0 && parseInt(button.textContent) <= 9 || button.textContent == ".") {
             if (values[2]) {
                 values[2] += button.textContent;
@@ -81,6 +82,7 @@ calcButtons.forEach(button => {
             }     
             currentNum+= button.textContent;
             display.textContent = currentNum;
+            // When an operator button is selected determine whether to calculate the current values or to append the operator to the values array
         } else if (operators.includes(button.textContent)) {
             currentOperator = button.textContent;
             if (values[2]) {
@@ -100,6 +102,7 @@ calcButtons.forEach(button => {
                 values.push(currentNum, currentOperator);
             }
             display.textContent = currentNum;
+            //When the equals button is selected run calculate function using all three values or if only one number and operator exist run the function using the number for both operands
         } else if (button.textContent === "=") {
             if(values[2]) {
                 if (values[2] == "0" && values[1] === "÷") {
@@ -123,7 +126,7 @@ calcButtons.forEach(button => {
             }
             display.textContent = currentNum;
             currentOperator = "";
-
+            // When Clear button is selected clear all values
         } else if (button.textContent === "C") {
             currentNum = "";
             currentOperator = "";
