@@ -32,7 +32,7 @@ body {
     color: #2C2C54;
     font-weight: 900;
     font-size: large;
-    transition: all .08s ease;
+    transition: all .12s ease;
 }
 .operatorButton {
     background-color: #FF6B6B;
