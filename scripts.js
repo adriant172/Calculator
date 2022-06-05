@@ -100,7 +100,10 @@ function calcLogic (eventType) {
                 }else if (values[0]) {
                     currentNum = "";
                     values.pop();
-                }     
+                };
+                if (currentNum.length === 12) {
+                    return;
+                }
                 currentNum+= button.textContent;
                 display.textContent = currentNum;
                 // When an operator button is selected determine whether to calculate the current values or to append the operator to the values array
@@ -111,7 +114,7 @@ function calcLogic (eventType) {
                         display.textContent = "That calculation is not allowed!!";
                         return;
                     }
-                    currentNum = operate(parseFloat(values[0]), values[1],parseFloat(values[2]));
+                    currentNum = operate(parseInt(values[0]), values[1],parseInt(values[2]));
                     currentNum = roundIfDecimal(currentNum);
                     while (values.length > 0) {
                         values.pop();
@@ -130,7 +133,7 @@ function calcLogic (eventType) {
                         display.textContent = "That calculation is not allowed!!";
                         return;
                     }
-                    currentNum = operate(parseFloat(values[0]), values[1],parseFloat(values[2]));
+                    currentNum = operate(parseInt(values[0]), values[1],parseInt(values[2]));
                     currentNum = roundIfDecimal(currentNum).toString();
                     while (values.length > 0) {
                         values.pop();
@@ -138,7 +141,7 @@ function calcLogic (eventType) {
                     values.push(currentNum);
                     
                 } else if (values[1]) {
-                    currentNum = operate(parseFloat(values[0]), values[1],parseFloat(values[0]));
+                    currentNum = operate(parseInt(values[0]), values[1],parseInt(values[0]));
                     currentNum = roundIfDecimal(currentNum).toString();
                     while (values.length > 0) {
                         values.pop();
